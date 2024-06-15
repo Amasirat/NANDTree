@@ -29,4 +29,3 @@ The algorithm is done recursively like this:
 * At the end return the current node
 
 The function of the algorithm described is implemented in Lib/NANDTreeCreator utility class under CreateNANDTreeUtil function.
- 
