@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "uyy1CpFRA+ByvPBjs9zvbqL+2FWdGH7mne+G4mr3t5DFuHXtWE2QzEI5M3Px/bCPojfYDAu8gVbo66QWUfANbQ==",
+  "success": true,
+  "projectFilePath": "/home/amasirat/projects/NANDTree/Lib/Lib.csproj",
+  "expectedPackageFiles": [
+    "/home/amasirat/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.6/microsoft.aspnetcore.app.ref.8.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}
