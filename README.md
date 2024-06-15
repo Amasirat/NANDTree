@@ -18,13 +18,13 @@ However if we take the Left-First solution and only check the left node of the t
 
 However this solution is incomplete as there is a possiblity of the evaluation process to still take O(n) time regardless.
 
-That is when all children of the left subtree contain the value of 1. Here we propose an algorithm that creates a NAND Tree in which the left-first algorithm fails to optimize the Evaluation.
+That is when all children of the left subtree evaluate to the value of 1. Here we propose an algorithm that creates a NAND Tree in which the left-first algorithm fails to optimize the Evaluation.
 
 Given a desired number of leaves, and the head node containing the required end value of the NAND tree (either 0 or 1), we can create a NAND tree in which the left subtree will always evaluate to 1, therefore making the left-first algorithm virtually identical to the naive solution in terms of running time.
 The algorithm is done recursively like this:
 
 * If the value of log2(leafcount) is equal to the height desired, return the current node
-* If the value of the currently given node is 1, create a left node with the value of 1 and a right node with the value of 0
+* If the value of the currently given node is 1, create a left node with the value of 1 and a right node with the value of 0, else if the value is 0 create both left and right nodes with the value of 1
 * Then reset the value of the current node to -1 and first recursively do the same for the left and then the right subtree
 * At the end return the current node
 
