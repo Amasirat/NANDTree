@@ -1,13 +1,13 @@
     public class Node
     {
-        public Node(bool value, Node left, Node right)
+        public Node(int value, Node left, Node right)
         {
             this.value = value;
             this.left = left;
             this.right = right;
         }
         
-        public bool? value{get; set;}
+        public int value{get; set;}
 
         public Node left{get; set;}
 
