@@ -2,11 +2,11 @@ using System.ComponentModel.Design.Serialization;
 
 namespace Lib;
 
-public class NANDTreeCreator
+public sealed class NANDTreeCreator
 {
     public static Node CreateNANDTree(int leafcount)
     {
-        Node? root =  new Node(1, null, null);
+        Node root =  new Node(1, null, null);
         return CreateNANDTreeUtil(leafcount, root, 0);
     }
 
@@ -19,8 +19,8 @@ public class NANDTreeCreator
 
         if(currentRoot.value == 1)
         {
-            currentRoot.left = new Node(0, null, null);
-            currentRoot.right = new Node(1, null, null);
+            currentRoot.left = new Node(1, null, null);
+            currentRoot.right = new Node(0, null, null);
         }
         else
         {
