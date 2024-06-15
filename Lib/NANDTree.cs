@@ -10,24 +10,22 @@ public class NANDTree : BinaryTree
 
     }
 
-    public int EvaluateLeftFirst()
+    public bool? EvaluateLeftFirst()
     {
-        int result = EvaluateLeftFirstUtil(root);
+        bool? result = EvaluateLeftFirstUtil(root);
 
         return result;
     }
 
-    private int EvaluateLeftFirstUtil(Node currentNode)
+    
+
+    public bool Evaluate()
     {
-        if(currentNode.value == -1)
-        {
-            return EvaluateLeftFirstUtil(currentNode.left);
-        }
-        else
-        {
 
-        }
+    }
 
-        return -1;
+    private bool? EvaluateLeftFirstUtil(Node currentNode)
+    {
+        return null;
     }
 }
