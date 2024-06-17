@@ -6,8 +6,8 @@ public class Program
 {
     public static void Main()
     {
-        NANDTree tree1 = new NANDTree(NANDTreeCreator.CreateNANDTree(16, 1));
+        NANDTree tree1 = new NANDTree(NANDTreeCreator.CreateNANDTree(2, 0));
         Console.WriteLine(tree1.Evaluate());
-        Console.WriteLine(tree1.LeftFirstEvaluate());
+        Console.WriteLine(tree1.RandomizedFirstEvaluate());
     }
 }

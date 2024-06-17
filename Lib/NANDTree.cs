@@ -1,6 +1,3 @@
-using System.ComponentModel.Design.Serialization;
-using System.Data;
-
 namespace Lib;
 
 public class NANDTree : BinaryTree
@@ -53,6 +50,42 @@ public class NANDTree : BinaryTree
                 return 1;
             }
         }
+    }
+
+    public int RandomizedFirstEvaluate()
+    {
+        return RandomizedFirstEvaluateUtil(root);
+    }
+
+    private int RandomizedFirstEvaluateUtil(Node currentNode)
+    {
+        if(currentNode.value != -1)
+            return currentNode.value;
+
+        Random rand = new Random();
+
+        int randomChoice = rand.Next(0,1);
+
+        switch(randomChoice)
+        {
+            case 0:
+            {
+                if(RandomizedFirstEvaluateUtil(currentNode.left) == 0)
+                    return 1;
+                break;
+            }
+            case 1:
+            {
+                if(RandomizedFirstEvaluateUtil(currentNode.right) == 0)
+                    return 1;
+                break;
+            }
+        }
+
+        if(RandomizedFirstEvaluateUtil(currentNode.left) == 1 && RandomizedFirstEvaluateUtil(currentNode.right) == 1)
+            return 0;
+        else
+            return 1;
     }
 
 }
