@@ -16,9 +16,11 @@ If we let n be the number of leaves in the NAND Tree, a naive implementation of 
 
 However if we take the Left-First solution and only check the left node of the tree. If the left node of the tree is false, we can skip evaluating its sibling and update the parent with the correct value, because (0 NAND 0 = 1 & 0 NAND 1 = 1)
 
-However this solution is incomplete as there is a possiblity of the evaluation process to still take O(n) time regardless.
+However this solution is incomplete as there is a possiblity of the evaluation process to still take O(n) time regardless, that is when all children of the left subtree evaluate to the value of 1.
 
-That is when all children of the left subtree evaluate to the value of 1. Here we propose an algorithm that creates a NAND Tree in which the left-first algorithm fails to optimize the Evaluation.
+Here we propose an algorithm that creates a NAND Tree in which the left-first algorithm fails to optimize the Evaluation.
+
+## 1. O(n) left-first algorithm
 
 Given a desired number of leaves, and the head node containing the required end value of the NAND tree (either 0 or 1), we can create a NAND tree in which the left subtree will always evaluate to 1, therefore making the left-first algorithm virtually identical to the naive solution in terms of running time.
 The algorithm is done recursively like this:
