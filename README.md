@@ -31,3 +31,21 @@ The algorithm is done recursively like this:
 * At the end return the current node
 
 The function of the algorithm described is implemented in Lib/NANDTreeCreator utility class under CreateNANDTreeUtil function.
+
+## 4. Probability of Evaluation
+
+Let's denote the probability that the root of the tree will evaluate to 0 or 1 as respectively P0(n) and P1(n). Solving this probability requires a recursive relation.
+
+When the left and right subtrees evaluate to 1 is the only possibility in which the parent will be 0. Therefore we can write these recurrence relations like this.
+
+Let n be the number of leaves in the NAND tree:
+
+    * P0(n) = P1(n/2) x P1(n/2)
+    * P1(n) = 1 - P0(n)
+
+The base case for these probabilities is for n = 1 in which P1 and P0 will be:
+
+P1(1) = 0.5
+P0(1) = 0.5
+
+Because The probability of a single leaf being 0 or 1 is 50% for both cases.
