@@ -102,7 +102,7 @@ public class NANDTree : BinaryTree
         }
     }
 // Probability of getting a 0 evaluation for the root of an n leaf tree 
-    public static float P0Evaluate(int leafcount)
+    private static float P0Evaluate(int leafcount)
     {
         if(leafcount == 1)
             return 0.5f;
@@ -111,7 +111,7 @@ public class NANDTree : BinaryTree
         return P1Evaluate(leafcount) * P1Evaluate(leafcount);
     }
 // probability of getting a 1 evaluation for a tree with n leaf nodes is 1 minus the probability that it will get zero
-    public static float P1Evaluate(int leafcount)
+    private static float P1Evaluate(int leafcount)
     {
         if(leafcount == 1)
             return 0.5f;
