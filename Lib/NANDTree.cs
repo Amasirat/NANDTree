@@ -87,4 +87,34 @@ public class NANDTree : BinaryTree
         else
             return TreeValue.One;
     }
+
+// Evaluate the probability that a NAND tree with n leaf nodes evaluates to a desired value
+    public static float ProbabilityEvaluate(TreeValue value, int leafcount)
+    {
+        switch(value)
+        {
+            case TreeValue.One:
+                return P1Evaluate(leafcount);
+            case TreeValue.Zero:
+                return P0Evaluate(leafcount);
+            default:
+                throw new InvalidDataException("NANDTree.ProbabilityEvaluate aquired invalid data");
+        }
+    }
+// Probability of getting a 0 evaluation for the root of an n leaf tree 
+    public static float P0Evaluate(int leafcount)
+    {
+        if(leafcount == 1)
+            return 0.5f;
+
+        leafcount /= 2;
+        return P1Evaluate(leafcount) * P1Evaluate(leafcount);
+    }
+// probability of getting a 1 evaluation for a tree with n leaf nodes is 1 minus the probability that it will get zero
+    public static float P1Evaluate(int leafcount)
+    {
+        if(leafcount == 1)
+            return 0.5f;
+        return 1 - P0Evaluate(leafcount);
+    }
 }

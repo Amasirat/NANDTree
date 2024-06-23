@@ -11,6 +11,9 @@ A NAND Tree is a full binary tree composed of leaves which are values containing
     1   0 1   1
 
 In our representations, we'll use an enum containing signed 8-bit integers. -1 for Gate, 1 and 0 for a valid boolean value.
+
+## Evaluation Algorithms
+
 If we let n be the number of leaves in the NAND Tree, a naive implementation of an algorithm evaluating the above tree will take O(n) time.
 
 However if we take the Left-First solution and only check the left node of the tree. If the left node of the tree is false, we can skip evaluating its sibling and update the parent with the correct value, because (0 NAND 0 = 1 & 0 NAND 1 = 1)
@@ -33,20 +36,28 @@ The function of the algorithm described is implemented in Lib/NANDTreeCreator ut
 
 The time complexity of our algorithm is O(nlogn)
 
+## 2. Randomized-First Algorithm
+
+## 3. Proving T~0(n) = O(n^2)
+
 ## 4. Probability of Evaluation
 
 Let's denote the probability that the root of the tree will evaluate to 0 or 1 as respectively P0(n) and P1(n). Solving this probability requires a recursive relation.
 
 When the left and right subtrees evaluate to 1 is the only possibility in which the parent will be 0. Therefore we can write these recurrence relations like this.
 
-Let n be the number of leaves in the NAND tree:
+Let n be the number of leaves in the NAND tree which has to be a power of 2 (n = 2^k):
 
     * P0(n) = P1(n/2) x P1(n/2)
     * P1(n) = 1 - P0(n)
 
-The base case for these probabilities is for n = 1 in which P1 and P0 will be:
+The base case for these probabilities is for n = 2^0 = 1 in which P1 and P0 will be:
 
 P1(1) = 0.5
+
 P0(1) = 0.5
 
-Because The probability of a single leaf being 0 or 1 is 50% for both cases.
+As the probability of a single leaf being 0 or 1 is 50% for both cases.
+
+We then implemented a simple static function inside the NANDTree class to evaluate the probability of a tree evaluation given n = 2^k leaves. After testing these functions with different inputs, we found that the probability of a tree with n = 2^15 or 32768 leaves evaluating one rounded to 1 in our environment.
+

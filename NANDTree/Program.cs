@@ -6,8 +6,7 @@ public class Program
 {
     public static void Main()
     {
-        NANDTree tree1 = new NANDTree(NANDTreeCreator.CreateNANDTree(2, 0));
-        Console.WriteLine(tree1.Evaluate());
-        Console.WriteLine(tree1.RandomizedFirstEvaluate());
+        Console.WriteLine($" Probability for 0 Evaluation: {NANDTree.ProbabilityEvaluate(TreeValue.Zero, 32768)}");
+        Console.WriteLine($" Probability for 1 Evaluation: {NANDTree.ProbabilityEvaluate(TreeValue.One, 32768)}");
     }
 }
