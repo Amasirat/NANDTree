@@ -1,11 +1,15 @@
 namespace Lib;    
-public class Node
+public sealed class Node
 {
     public Node(TreeValue value, Node left, Node right)
     {
         this.value = value;
         this.left = left;
         this.right = right;
+    }
+
+    public Node(TreeValue value) : this(value, null, null)
+    {
     }
         
     public TreeValue value{get; set;}

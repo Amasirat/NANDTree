@@ -9,7 +9,7 @@ public sealed class NANDTreeCreator
         if(evalValue != TreeValue.Zero && evalValue != TreeValue.One)
             throw new ArgumentException();
 
-        Node root =  new Node(evalValue, null, null);
+        Node root =  new Node(evalValue);
         return CreateNANDTreeUtil(leafcount, root, 0);
     }
 
@@ -21,20 +21,20 @@ public sealed class NANDTreeCreator
             return currentRoot;
         }
 
-        if(currentRoot.value == TreeValue.One)
+        if(currentRoot.Value == TreeValue.One)
         {
-            currentRoot.left = new Node(TreeValue.One, null, null);
-            currentRoot.right = new Node(TreeValue.Zero, null, null);
+            currentRoot.Left = new Node(TreeValue.One);
+            currentRoot.Right = new Node(TreeValue.Zero);
         }
         else
         {
-            currentRoot.left = new Node(TreeValue.One, null, null);
-            currentRoot.right = new Node(TreeValue.One, null, null);
+            currentRoot.Left = new Node(TreeValue.One);
+            currentRoot.Right = new Node(TreeValue.One);
         }
 
-        currentRoot.value = TreeValue.Gate;//make this node a NAND gate
-        CreateNANDTreeUtil(leafcount, currentRoot.left, height + 1);
-        CreateNANDTreeUtil(leafcount, currentRoot.right, height + 1);
+        currentRoot.Value = TreeValue.Gate;//make this node a NAND gate
+        CreateNANDTreeUtil(leafcount, currentRoot.Left, height + 1);
+        CreateNANDTreeUtil(leafcount, currentRoot.Right, height + 1);
         return currentRoot;
     }
 }
