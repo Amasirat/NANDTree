@@ -45,11 +45,11 @@ Then we use recursion to dictate the evaluation of the left and right subtrees.
      1  0 1  1
 
         -1
-        / \
-       1   0              The four leaves are evaluated to 1 and 0 without short-circuit,
-                          creating yet another NAND tree that does not shortcircuit
+        / \               The four leaves are evaluated to 1 and 0 without short-circuit,
+       1  0                 creating yet another NAND tree that does not shortcircuit             
 
-         1                The evaluation of 1 has been done without short-circuiting as the left subtree remained 1
+         1                The evaluation of 1 has been done without short-circuiting 
+                            as the left subtree remained 1
 
 A summary of the above algorithm is done recursively in code like this:
 
@@ -71,9 +71,9 @@ This algorithm visits each parent node of the tree to create its leaves.
 * LeafCount = 2: T(2) = 3 recursion calls
 * LeafCount = 3: T(3) = 5 recursion calls
 * LeafCount = 4: T(4) = 7 recursion calls
-* .
-* .
-* .
+* ...
+* ...
+* ...
 
 * LeafCount = n: T(n) = 2n - 1
 
