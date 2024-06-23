@@ -81,9 +81,22 @@ So using the constructed pattern, our algorithm does 2n-1 recursions. It does O(
 
 ## 2. Randomized-First Algorithm
 
-Seeing the short-comings of the left-first algorithm.
+Seeing the short-comings of the left-first algorithm, we can come up with another approach to mediate this issue. Instead of choosing the left subtree, choose a random subtree at each turn, hoping that our choice can short-circuit the evaluation at least once. This approach is called the *Randomized-First algorithm*.
 
-## 3. Proving T~0(n) = O(n^2)
+The function for this algorithm is also implemented inside Lib.NANDTree.RandomizedFirstEvaluateUtil function.
+
+The recurrence relation for this algorithm is like this:
+
+* T0(n) is the expected time complexity if the tree evaluates to 0
+* T1(n) is the expected time complexity if the tree evaluates to 1
+
+    T0(n) = 2T1(n/2) + 1
+    T1(n) = 0.5T1(n/2) + T0(n/2) + 1
+
+    T0(1) = 1
+    T1(1) = 1
+
+## 3. Proving T~0(n) = O(n^epsilon)
 
 ## 4. Probability of Evaluation
 
