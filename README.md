@@ -65,7 +65,7 @@ At the end of the algorithm, it outputs a root node which contains leaf nodes wi
 
 ### CreateNANDTree's Order of Complexity
 
-This algorithm visits each parent node of the tree to create its leaves.
+This algorithm visits each node of the tree to create its leaves at least once. There will be at least one recursion call for every node of the NAND tree. Therefore the expected runtime will be 2n-1.
 
 * LeafCount = 1: T(1) = 1 recursion call
 * LeafCount = 2: T(2) = 3 recursion calls
@@ -118,6 +118,16 @@ A summary of the above in a recurrence relation will be:
     T1(n) = 0.5T1(n/2) + T0(n/2) + 1
 
 ## 3. Proving T0(n) = O(n^epsilon)
+
+Although its formal establishment is difficult, T0(n) is the higher bound of T1(n), since in the case of T1(n), there is a possibility of short-circuiting, however there is no such thing for T0(n). Using this fact and given an extra condition of n = 4^k, we managed to prove that the worst-case time complexity of T0(n) is O(n^epsilon) where epsilon is some real number smaller than 1.
+
+Supposing that n = 4^k means that each time we can devide the tree into 4 parts all at once.
+
+T0(n) is the higher bound of T1(n), so for calculating worst-case time complexity, we can substitute T1(n) with T0(n).
+
+T0(n) = 2T1(n/2) + O(1) ----> using n = 4^k ---> T0(n) = 2T1(n/4) + O(1) ---> using T1 <= T0 ----> T0(n) <= 2T0(n/4) + O(1)
+
+Using master method, we can solve the above recurrence relation and get **T0(n) = O(n^0.5=epsilon)**.
 
 ## 4. Probability of Evaluation
 
