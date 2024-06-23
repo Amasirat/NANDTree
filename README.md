@@ -87,14 +87,30 @@ The function for this algorithm is also implemented inside Lib.NANDTree.Randomiz
 
 The recurrence relation for this algorithm is like this:
 
-* T0(n) is the expected time complexity if the tree evaluates to 0
-* T1(n) is the expected time complexity if the tree evaluates to 1
+T0(n) is the expected time complexity if the tree evaluates to 0
+T1(n) is the expected time complexity if the tree evaluates to 1
 
     T0(n) = 2T1(n/2) + 1
     T1(n) = 0.5T1(n/2) + T0(n/2) + 1
 
+The base cases are also denoted as so:
+
     T0(1) = 1
     T1(1) = 1
+
+* While evaluating a node, if it is expected to evaluate to 0, Its expected time complexity will be the expected time complexity of each of its children subtrees evaluating to 1 plus its base case. Short-circuiting does not occur in this case, so each subtree needs to be evaluated in turn. There are 2 children subtrees where each subtree has n/2 leaf nodes, so 2T1(n/2) + 1 is accurate.
+
+* While evaluating a node, if it is expected to evaluate to 1, There will be a few possibilities.
+
+Based on the NAND truth table, There are three possible combinations of 1 and 0 which will evaluate to 1:
+
+* 0 NAND 0
+* 0 NAND 1
+* 1 NAND 0
+
+* Either we choose a subtree that evaluates to 0, which will short-circuit the tree giving us T0(n/2) + the base case.
+
+* Or we choose a subtree that evaluates to 1, which will not short-circuit the tree and we have to visit the other child subtree as well. However due to the randomized nature of this algorithm. There is only a 50 percent chance of this occuring which makes it a 0.5T1(n/2). However if a child that evaluates to 1 has indeed been chosen, the other subtree will always evaluate to 0, therefore T0(n/2) time will also take place. The expected runtime will be half of the expected runtime of T1(n/2) plus the expected runtime of T0(n/2) plus the base case.
 
 ## 3. Proving T~0(n) = O(n^epsilon)
 
