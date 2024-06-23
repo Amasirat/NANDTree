@@ -63,15 +63,17 @@ The function of the algorithm described is implemented in Lib/NANDTreeCreator ut
 
 At the end of the algorithm, it outputs a root node which contains leaf nodes with 1 or 0 values which due to the reason mentioned above will not be optimized with left-first algorithm.
 
+### CreateNANDTree's Order of Complexity
+
 This algorithm visits each parent node of the tree to create its leaves.
 
 * LeafCount = 1: T(1) = 1 recursion call
 * LeafCount = 2: T(2) = 3 recursion calls
 * LeafCount = 3: T(3) = 5 recursion calls
 * LeafCount = 4: T(4) = 7 recursion calls
-.
-.
-.
+* .
+* .
+* .
 
 * LeafCount = n: T(n) = 2n - 1
 
