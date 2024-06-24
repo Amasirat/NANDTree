@@ -4,12 +4,12 @@ namespace Lib;
 
 public sealed class NANDTreeCreator
 {
-    public static Node CreateNANDTree(int leafcount, int evalValue)
+    public static Node CreateNANDTree(int leafcount, TreeValue evalValue)
     {
-        if(evalValue != 0 && evalValue != 1)
+        if(evalValue != TreeValue.Zero && evalValue != TreeValue.One)
             throw new ArgumentException();
 
-        Node root =  new Node(evalValue, null, null);
+        Node root =  new Node(evalValue);
         return CreateNANDTreeUtil(leafcount, root, 0);
     }
 
@@ -21,20 +21,20 @@ public sealed class NANDTreeCreator
             return currentRoot;
         }
 
-        if(currentRoot.value == 1)
+        if(currentRoot.Value == TreeValue.One)
         {
-            currentRoot.left = new Node(1, null, null);
-            currentRoot.right = new Node(0, null, null);
+            currentRoot.Left = new Node(TreeValue.One);
+            currentRoot.Right = new Node(TreeValue.Zero);
         }
         else
         {
-            currentRoot.left = new Node(1, null, null);
-            currentRoot.right = new Node(1, null, null);
+            currentRoot.Left = new Node(TreeValue.One);
+            currentRoot.Right = new Node(TreeValue.One);
         }
 
-        currentRoot.value = -1;//make this node a NAND gate
-        CreateNANDTreeUtil(leafcount, currentRoot.left, height + 1);
-        CreateNANDTreeUtil(leafcount, currentRoot.right, height + 1);
+        currentRoot.Value = TreeValue.Gate;//make this node a NAND gate
+        CreateNANDTreeUtil(leafcount, currentRoot.Left, height + 1);
+        CreateNANDTreeUtil(leafcount, currentRoot.Right, height + 1);
         return currentRoot;
     }
 }
