@@ -1,10 +1,14 @@
 namespace Lib;
 
-public class NANDTree : BinaryTree
+public class NANDTree
 {
-    public NANDTree(Node root) : base(root)
+    public NANDTree(Node root)
     {
+        if(root == null)
+            throw new ArgumentNullException();
+        this.root = root;
     }
+
 // a wrapper function for EvaluateUtil, The simple and naive method of NANDTree evaluation
     public TreeValue Evaluate()
     {
@@ -117,4 +121,57 @@ public class NANDTree : BinaryTree
             return 0.5f;
         return 1 - P0Evaluate(leafcount);
     }
+
+    public string GetBooleanExpression()
+    {
+        List<Node> leaves = GetLeaves();
+
+        switch(leaves.Count)
+        {
+            case 0:
+                return "No Boolean Expression.";
+            case 1:
+                return leaves[0].value.ToString();
+            default:
+            {
+                string expression = "";
+                int count = 1;
+                foreach(Node leaf in leaves)
+                {
+                    expression += $"{leaf.value}";
+                    if(count != leaves.Count)
+                    {
+                        expression += " NAND ";
+                    }
+                    count++;
+                }
+                return expression;
+            }
+        }
+    }
+
+// Get each of the leaves inside the NANDTree from left to right
+    private List<Node> GetLeaves()
+    {
+        List<Node> leaves = new List<Node>();
+
+        GetLeavesUtil(root, leaves);
+        return leaves;
+    }
+// Util function for above
+    private void GetLeavesUtil(Node? currentNode, List<Node> leaves)
+    {
+        if(currentNode == null)
+            return;
+
+        if(currentNode.left == null && currentNode.right == null)
+            leaves.Add(currentNode);
+        else
+        {
+            GetLeavesUtil(currentNode.left, leaves);
+            GetLeavesUtil(currentNode.right, leaves);
+        }
+    }
+
+    private Node root;
 }
