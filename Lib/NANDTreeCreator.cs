@@ -7,7 +7,7 @@ public sealed class NANDTreeCreator
     public static Node CreateNANDTree(int leafcount, TreeValue evalValue)
     {
         if(evalValue != TreeValue.Zero && evalValue != TreeValue.One)
-            throw new ArgumentException();
+            throw new ArgumentException("Invalid input for CreateNANDTree method detected");
 
         Node root =  new Node(evalValue);
         return CreateNANDTreeUtil(leafcount, root, 0);
@@ -21,20 +21,20 @@ public sealed class NANDTreeCreator
             return currentRoot;
         }
 
-        if(currentRoot.Value == TreeValue.One)
+        if(currentRoot.value == TreeValue.One)
         {
-            currentRoot.Left = new Node(TreeValue.One);
-            currentRoot.Right = new Node(TreeValue.Zero);
+            currentRoot.left = new Node(TreeValue.One);
+            currentRoot.right = new Node(TreeValue.Zero);
         }
         else
         {
-            currentRoot.Left = new Node(TreeValue.One);
-            currentRoot.Right = new Node(TreeValue.One);
+            currentRoot.left = new Node(TreeValue.One);
+            currentRoot.right = new Node(TreeValue.One);
         }
 
-        currentRoot.Value = TreeValue.Gate;//make this node a NAND gate
-        CreateNANDTreeUtil(leafcount, currentRoot.Left, height + 1);
-        CreateNANDTreeUtil(leafcount, currentRoot.Right, height + 1);
+        currentRoot.value = TreeValue.Gate;//make this node a NAND gate
+        CreateNANDTreeUtil(leafcount, currentRoot.left, height + 1);
+        CreateNANDTreeUtil(leafcount, currentRoot.right, height + 1);
         return currentRoot;
     }
 }
