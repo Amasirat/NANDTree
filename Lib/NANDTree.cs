@@ -8,8 +8,8 @@ public class NANDTree : BinaryTree
 // a wrapper function for EvaluateUtil, The simple and naive method of NANDTree evaluation
     public TreeValue Evaluate()
     {
-        if(root.Left == null && root.Right == null)
-            return root.Value;
+        if(root.left == null && root.right == null)
+            return root.value;
 
         return EvaluateUtil(root);
     }
@@ -17,11 +17,11 @@ public class NANDTree : BinaryTree
     private TreeValue EvaluateUtil(Node currentNode)
     {
     // boundary condition
-        if(currentNode.Value != TreeValue.Gate)
-            return currentNode.Value;
+        if(currentNode.value != TreeValue.Gate)
+            return currentNode.value;
     //recursively evaluate each subtree, 
     //there's only one case where output will be 0 and that is 1 NAND 1 
-        if(EvaluateUtil(currentNode.Left) == TreeValue.One && EvaluateUtil(currentNode.Right) == TreeValue.One)
+        if(EvaluateUtil(currentNode.left) == TreeValue.One && EvaluateUtil(currentNode.right) == TreeValue.One)
             return TreeValue.Zero;
         else
             return TreeValue.One;
@@ -34,14 +34,14 @@ public class NANDTree : BinaryTree
 
     private TreeValue LeftFirstEvaluateUtil(Node currentNode)
     {
-        if(currentNode.Value != TreeValue.Gate)
-            return currentNode.Value;
+        if(currentNode.value != TreeValue.Gate)
+            return currentNode.value;
 
-        if(LeftFirstEvaluateUtil(currentNode.Left) == TreeValue.Zero)
+        if(LeftFirstEvaluateUtil(currentNode.left) == TreeValue.Zero)
             return TreeValue.One;
         else
         {
-            if(LeftFirstEvaluateUtil(currentNode.Right) == TreeValue.One)
+            if(LeftFirstEvaluateUtil(currentNode.right) == TreeValue.One)
             {
                 return TreeValue.Zero;
             }
@@ -59,8 +59,8 @@ public class NANDTree : BinaryTree
 
     private TreeValue RandomizedFirstEvaluateUtil(Node currentNode)
     {   
-        if(currentNode.Value != TreeValue.Gate)
-            return currentNode.Value;
+        if(currentNode.value != TreeValue.Gate)
+            return currentNode.value;
 
         Random rand = new Random();
 
@@ -70,19 +70,19 @@ public class NANDTree : BinaryTree
         {
             case 0:
             {
-                if(RandomizedFirstEvaluateUtil(currentNode.Left) == TreeValue.Zero)
+                if(RandomizedFirstEvaluateUtil(currentNode.left) == TreeValue.Zero)
                     return TreeValue.One;
                 break;
             }
             case 1:
             {
-                if(RandomizedFirstEvaluateUtil(currentNode.Right) == TreeValue.Zero)
+                if(RandomizedFirstEvaluateUtil(currentNode.right) == TreeValue.Zero)
                     return TreeValue.One;
                 break;
             }
         }
 
-        if(RandomizedFirstEvaluateUtil(currentNode.Left) == TreeValue.One && RandomizedFirstEvaluateUtil(currentNode.Right) == TreeValue.One)
+        if(RandomizedFirstEvaluateUtil(currentNode.left) == TreeValue.One && RandomizedFirstEvaluateUtil(currentNode.right) == TreeValue.One)
             return TreeValue.Zero;
         else
             return TreeValue.One;
