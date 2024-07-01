@@ -108,9 +108,13 @@ In this particular case, there will be two possibilities:
 
 * Either we choose a subtree that evaluates to 0, which will short-circuit the tree giving us T0(n/2) + the base case.
 
-* Or we choose a subtree that evaluates to 1, which will not short-circuit the tree and we have to visit the other child subtree as well. However due to the randomized nature of this algorithm. There is only a 50 percent chance of this occuring which makes it a 0.5T1(n/2). However if a child that evaluates to 1 has indeed been chosen, the other subtree will always evaluate to 0, therefore T0(n/2) time will also take place.
+* Or we choose a subtree that evaluates to 1, which will not short-circuit the tree and we have to visit the other child subtree as well. In this case, the Time complexity will be T1(n/2) + T0(n/2).
 
-Taking a union of both of these cases, The expected runtime will be half of the expected runtime of T1(n/2) plus the expected runtime of T0(n/2) plus the base case.
+Taking an average union of both of these cases will yield:
+
+T1(n) = Ta1(n) + Tb1(n) = (2T0(n/2) + T1(n/2)) / 2 = 1/2T1(n/2) + T0(n/2) + O(1)
+
+The expected runtime will be half of the expected runtime of T1(n/2) plus the expected runtime of T0(n/2) plus the base case.
 
 A summary of the above in a recurrence relation will be:
 
@@ -121,13 +125,58 @@ A summary of the above in a recurrence relation will be:
 
 Although its formal establishment is difficult, T0(n) is the higher bound of T1(n), since in the case of T1(n), there is a possibility of short-circuiting, however there is no such thing for T0(n). Using this fact and given an extra condition of n = 4^k, we managed to prove that the worst-case time complexity of T0(n) is O(n^epsilon) where epsilon is some real number smaller than 1.
 
-Supposing that n = 4^k means that each time we can devide the tree into 4 parts all at once.
+We were asked to suppose n = 4^k. This means our tree's input will either have 1 or 4 leaves and on. We can not have leaves of 8 or 32 or etc. We are also supposing T0(n) is the upper bound for T1(n).
 
-T0(n) is the higher bound of T1(n), so for calculating worst-case time complexity, we can substitute T1(n) with T0(n).
+Proof:
+We take a change of variables:
+    n = 4^k = 2 ^ (2k) = 2 ^ h
+h being the height of the tree. Due to the allowed input, h can only take even exponents (2k).
 
-T0(n) = 2T1(n/2) + O(1) ----> using n = 4^k ---> T0(n) = 2T1(n/4) + O(1) ---> using T1 <= T0 ----> T0(n) <= 2T0(n/4) + O(1)
+We then rewrite the recurrence relations based on h.
 
-Using master method, we can solve the above recurrence relation and get **T0(n) = O(n^0.5=epsilon)**.
+        T0(h) = 2T(h-1) + 1
+        T1(h) = 0.5T1(h-1) + T0(h-1) + 1
+We can substitute T0(h-1) with the T0(h) recurrence relation above. Giving us:
+
+        T1(h) = 0.5T1(h-1) + 2T1(h-2) + 2
+
+This relation is a non-homogenous second-order recurrence relation.
+
+The linear answer for T1(h) will be:
+
+T1(h) = associated homogenous answer + particular answer
+
+We can get the associated homogenous answer using the characteristic equation.
+
+        r^2 - 0.5r + 2 = 0
+        r1 = 1.68
+        r2 = -1.18
+
+General homogenous form: T1h(h) = A(1.68)^h + B(-1.18)^h
+
+In order to derive the particular answer, we guess a form for T1. The particular function is a constant (f(h) = 2).
+
+        T1(h) = C
+
+Substituing C inside the equation we get:
+
+        C = 0.5C + 2C + 2  ------->  C = -4/3
+
+        T1(h) = A(1.68)^h + B(-1.18)^2 - 4/3
+
+Substituing T1 in T0 will yield:
+
+        T0(h) = 2(A(1.68)^h + B(-1.18)^2 - 4/3)
+
+The dominant figure in the above relation is (1.68)^h, therefore the notation for T0(h) can be represented as:
+
+        T0(h) = O(1.68^h)
+
+Now while changing back to the variable of n, note that n^1 = 2^h. We can say (1.68)^h < n^1. If we name the exponent of n as epsilon, then n^epsilon = 2^h, so
+
+        T0(h) = O(1.68^h) ----> T0(n) = O(n^epsilon) where epsilon is some number smaller than 1
+
+The reason this is true, is because the newly gained term has to be smaller than n whose exponent was 1. n can not have an exponent larger than 1 therefore epsilon is some number smaller than 1.
 
 ## 4. Probability of Evaluation
 
