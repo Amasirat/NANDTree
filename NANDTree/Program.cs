@@ -102,7 +102,7 @@ public class Program
 
         watch.Stop();
         Console.WriteLine(
-            $"---Left-first algorithm\nEvaluation: {value1}\nRuntime: {watch.ElapsedMilliseconds}"
+            $"---Left-first algorithm\nEvaluation: {value1}\nRuntime: {watch.ElapsedTicks} Ticks"
         );
 
         watch.Start();
@@ -111,7 +111,7 @@ public class Program
 
         watch.Stop();
         Console.WriteLine(
-            $"---Randomized-first algorithm\nEvaluation: {value2}\nRuntime: {watch.ElapsedMilliseconds}"
+            $"---Randomized-first algorithm\nEvaluation: {value2}\nRuntime: {watch.ElapsedTicks} Ticks"
         );
     }
 

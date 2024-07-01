@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NANDTree")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d72378127223fe6b8bfab5c3360d7ba30ac3837d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7153fccb7ff471b6ef2e58f3f8a33b9a8aa2b0e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("NANDTree")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NANDTree")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
