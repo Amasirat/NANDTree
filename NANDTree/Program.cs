@@ -105,9 +105,11 @@ public class Program
             $"---Left-first algorithm\nEvaluation: {value1}\nRuntime: {watch.ElapsedTicks} Ticks"
         );
 
+        watch.Reset();
+
         watch.Start();
 
-        TreeValue value2 = treeToEvaluate.LeftFirstEvaluate();
+        TreeValue value2 = treeToEvaluate.RandomizedFirstEvaluate();
 
         watch.Stop();
         Console.WriteLine(

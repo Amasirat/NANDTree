@@ -124,8 +124,6 @@ A summary of the above in a recurrence relation will be:
     T0(n) = 2T1(n/2) + 1
     T1(n) = 0.5T1(n/2) + T0(n/2) + 1
 
-It is worth noting that in our implementations and real-life measurements, the randomized-first algorithm overall took more time than the left-first algorithm, however we can easily chalk that up to the inefficiency of the pseudo-random number generation algorithm or a specific kink in our testing environment or code.
-
 ## 3. Proving T0(n) = O(n^epsilon)
 
 Although its formal establishment is difficult, T0(n) is the higher bound of T1(n), since in the case of T1(n), there is a possibility of short-circuiting, however there is no such thing for T0(n). Using this fact and given an extra condition of n = 4^k, we managed to prove that the worst-case time complexity of T0(n) is O(n^epsilon) where epsilon is some real number smaller than 1.

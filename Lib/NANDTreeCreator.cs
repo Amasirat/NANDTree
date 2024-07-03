@@ -6,7 +6,7 @@ public sealed class NANDTreeCreator
 {
     public static Node CreateNANDTree(int leafcount, TreeValue evalValue)
     {
-        if(evalValue != TreeValue.Zero && evalValue != TreeValue.One)
+        if(evalValue == TreeValue.Gate)
             throw new ArgumentException("Invalid input for CreateNANDTree method detected");
 
         Node root =  new Node(evalValue);

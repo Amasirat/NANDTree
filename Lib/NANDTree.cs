@@ -68,7 +68,7 @@ public class NANDTree
 
         Random rand = new Random();
 
-        int randomChoice = rand.Next(0,1);
+        int randomChoice = rand.Next(0,2);
 
         switch(randomChoice)
         {
@@ -76,7 +76,8 @@ public class NANDTree
             {
                 if(RandomizedFirstEvaluateUtil(currentNode.left) == TreeValue.Zero)
                     return TreeValue.One;
-                else if (RandomizedFirstEvaluateUtil(currentNode.right) == TreeValue.One)
+                
+                if (RandomizedFirstEvaluateUtil(currentNode.right) == TreeValue.One)
                     return TreeValue.Zero;
                 else
                     return TreeValue.One;
@@ -85,7 +86,8 @@ public class NANDTree
             {
                 if(RandomizedFirstEvaluateUtil(currentNode.right) == TreeValue.Zero)
                     return TreeValue.One;
-                else if (RandomizedFirstEvaluateUtil(currentNode.left) == TreeValue.One)
+                
+                if (RandomizedFirstEvaluateUtil(currentNode.left) == TreeValue.One)
                     return TreeValue.Zero;
                 else
                     return TreeValue.One;
