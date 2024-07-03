@@ -11,9 +11,9 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("NANDTree")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee4abd3ac169340ee89b0ed3f5588df8c9280e58")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7153fccb7ff471b6ef2e58f3f8a33b9a8aa2b0e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("NANDTree")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NANDTree")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

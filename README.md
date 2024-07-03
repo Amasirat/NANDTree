@@ -10,23 +10,26 @@ A NAND Tree is a full binary tree composed of leaves which are values containing
     /   \ /   \
     1   0 1   1
 
-In our representations, we'll use an enum containing signed 8-bit integers. -1 for Gate, 1 and 0 for a valid boolean value.
+In our code in C#, we'll use an enum containing signed 8-bit integers to represent the data of these nodes. -1 for Gate, 1 and 0 for a valid Boolean value.
 
 ## Evaluation Algorithms
 
-If we let n be the number of leaves in the NAND Tree, a naive implementation of an algorithm evaluating the above tree will take O(n) time.
+If we let n be the number of leaves in the NAND Tree, a naive implementation of an
+algorithm evaluating the tree will take O(n) time.
 
-However if we take the Left-First solution and only check the left node of the tree. If the left node of the tree is false, we can skip evaluating its sibling and update the parent with the correct value, because (0 NAND 0 = 1 & 0 NAND 1 = 1). This is called *short-circuiting*.
+However, we can take a different approach known as the Left-First solution and only check the left node of the tree. If the left node of the tree is 0, we can skip evaluating its sibling
+and update the parent with the correct value, because (0 NAND 0 = 1 & 0 NAND 1 = 1). This
+is called *short-circuiting*.
 
-However this solution is incomplete as there is a possiblity of the evaluation process to still take O(n) time regardless, that is when short-circuiting fails to take place at every point of evaluation.
+However, this solution is incomplete as there is a possibility the evaluation process will still take O(n) time regardless, that is when short-circuiting fails to take place at every point of evaluation.
 
 Here we propose an algorithm that creates a NAND Tree in which the left-first algorithm fails to optimize the Evaluation.
 
 ## 1. O(n) left-first algorithm
 
-Given a desired number of leaves, and the head node containing the required end value of the NAND tree (either 0 or 1), we can create a NAND tree in which the left subtree will always evaluate to 1. The reason is that the left-first algorithm short-circuits only if the left subtree has been evaluated to be 0 at any point of evaluation, Therefore making the left-first algorithm virtually identical to the naive solution in terms of running time if that condition is not met.
+Given a desired number of leaves, and the head node containing the required end value of the NAND tree (either 0 or 1), we can create a NAND tree in which the left subtree will always evaluate to 1. The reason we would want to do that is that the left-first algorithm short-circuits only if the left subtree has been evaluated to be 0 at any point of evaluation, therefore making the left-first algorithm virtually identical to the naive solution in terms of running time if that condition is not met.
 
-In order to do that, We need to start from the top to bottom creating it, therefore we require a node that contains the value the evaluation ends with.
+To do that, We need to start from the top to bottom creating it, therefore we require a node that contains the value the evaluation ends with.
 
 In case the end evaluation is 1:
 
@@ -57,7 +60,7 @@ A summary of the above algorithm is done recursively in code like this:
 
 * If the value of the currently given node is 1, create a left node with the value of 1 and a right node with the value of 0, else if the value is 0 create both left and right nodes with the value of 1
 
-* Then reset the value of the current node to -1 and first recursively do the same for the left and then the right subtree
+* Then reset the value of the current node to -1 and then recursively do the same for the left and then the right subtree until the condition in the first bulletpoint becomes true.
 
 The function of the algorithm described is implemented in Lib/NANDTreeCreator utility class under CreateNANDTreeUtil function.
 
@@ -120,6 +123,8 @@ A summary of the above in a recurrence relation will be:
 
     T0(n) = 2T1(n/2) + 1
     T1(n) = 0.5T1(n/2) + T0(n/2) + 1
+
+It is worth noting that in our implementations and real-life measurements, the randomized-first algorithm overall took more time than the left-first algorithm, however we can easily chalk that up to the inefficiency of the pseudo-random number generation algorithm or a specific kink in our testing environment or code.
 
 ## 3. Proving T0(n) = O(n^epsilon)
 
