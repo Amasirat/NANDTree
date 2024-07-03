@@ -1,0 +1,3 @@
+/home/amasirat/projects/NANDTree/Lib/bin/Release/net8.0/publish/Lib.dll
+/home/amasirat/projects/NANDTree/Lib/bin/Release/net8.0/publish/Lib.deps.json
+/home/amasirat/projects/NANDTree/Lib/bin/Release/net8.0/publish/Lib.pdb

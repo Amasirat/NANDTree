@@ -1,0 +1,7 @@
+/home/amasirat/projects/NANDTree/NANDTree/bin/Release/net8.0/publish/NANDTree
+/home/amasirat/projects/NANDTree/NANDTree/bin/Release/net8.0/publish/NANDTree.dll
+/home/amasirat/projects/NANDTree/NANDTree/bin/Release/net8.0/publish/NANDTree.deps.json
+/home/amasirat/projects/NANDTree/NANDTree/bin/Release/net8.0/publish/NANDTree.runtimeconfig.json
+/home/amasirat/projects/NANDTree/NANDTree/bin/Release/net8.0/publish/NANDTree.pdb
+/home/amasirat/projects/NANDTree/NANDTree/bin/Release/net8.0/publish/Lib.dll
+/home/amasirat/projects/NANDTree/NANDTree/bin/Release/net8.0/publish/Lib.pdb

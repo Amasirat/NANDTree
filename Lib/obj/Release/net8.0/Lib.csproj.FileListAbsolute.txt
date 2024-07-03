@@ -1,0 +1,12 @@
+/home/amasirat/projects/NANDTree/Lib/bin/Release/net8.0/Lib.deps.json
+/home/amasirat/projects/NANDTree/Lib/bin/Release/net8.0/Lib.dll
+/home/amasirat/projects/NANDTree/Lib/bin/Release/net8.0/Lib.pdb
+/home/amasirat/projects/NANDTree/Lib/obj/Release/net8.0/Lib.GeneratedMSBuildEditorConfig.editorconfig
+/home/amasirat/projects/NANDTree/Lib/obj/Release/net8.0/Lib.AssemblyInfoInputs.cache
+/home/amasirat/projects/NANDTree/Lib/obj/Release/net8.0/Lib.AssemblyInfo.cs
+/home/amasirat/projects/NANDTree/Lib/obj/Release/net8.0/Lib.csproj.CoreCompileInputs.cache
+/home/amasirat/projects/NANDTree/Lib/obj/Release/net8.0/Lib.sourcelink.json
+/home/amasirat/projects/NANDTree/Lib/obj/Release/net8.0/Lib.dll
+/home/amasirat/projects/NANDTree/Lib/obj/Release/net8.0/refint/Lib.dll
+/home/amasirat/projects/NANDTree/Lib/obj/Release/net8.0/Lib.pdb
+/home/amasirat/projects/NANDTree/Lib/obj/Release/net8.0/ref/Lib.dll
