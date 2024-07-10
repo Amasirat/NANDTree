@@ -95,11 +95,6 @@ public class NANDTree
             default:
                 throw new ArgumentException("Random Number Generator gave unexpected results in Randomized First Evaluation function");
         }
-
-        // if(RandomizedFirstEvaluateUtil(currentNode.left) == TreeValue.One && RandomizedFirstEvaluateUtil(currentNode.right) == TreeValue.One)
-        //     return TreeValue.Zero;
-        // else
-        //     return TreeValue.One;
     }
 
 // Evaluate the probability that a NAND tree with n leaf nodes evaluates to a desired value
